@@ -13,8 +13,10 @@ app = Flask(__name__)
 # Global message queue for storing translations
 message_queue = queue.Queue()
 
-# Initialize components
-translator = Translator(use_local="USE_LOCAL_TRANSLATION" in os.environ)
+# Initialize components with local translation by default
+# Only use Google Translate if explicitly configured
+use_google_translate = os.getenv("USE_GOOGLE_TRANSLATE", "").lower() == "true"
+translator = Translator(use_local=not use_google_translate)
 
 def translation_callback(text):
     """Callback function for handling decoded GGwave messages."""

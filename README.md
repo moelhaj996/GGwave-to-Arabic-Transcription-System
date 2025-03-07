@@ -5,16 +5,18 @@ A real-time system that captures GGwave acoustic signals, decodes them, and tran
 ## Features
 
 - Real-time GGwave signal capture and decoding
-- Instant translation to Arabic using AI models
+- Instant translation to Arabic using local AI model (MarianMT)
+- Optional Google Translate API integration
 - Live transcript display through web interface
 - Support for both audible and ultrasonic GGwave signals
 - Noise filtering and robust error handling
+- Offline translation support by default
 
 ## Prerequisites
 
 - Python 3.8+
 - PortAudio (for PyAudio)
-- Internet connection (for translation API)
+- Internet connection (only for initial model download or Google Translate API if enabled)
 
 ## Installation
 
@@ -35,9 +37,10 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-4. Set up environment variables:
-Create a `.env` file and add your API keys if using external translation services:
+4. (Optional) Set up environment variables:
+If you want to use Google Translate API instead of the local model, create a `.env` file and add:
 ```
+USE_GOOGLE_TRANSLATE=true
 GOOGLE_TRANSLATE_API_KEY=your_api_key_here
 ```
 
@@ -54,6 +57,22 @@ http://localhost:5000
 ```
 
 3. The system will automatically start listening for GGwave signals and display translated Arabic text in real-time.
+
+## Translation Options
+
+The system supports two translation methods:
+
+1. Local Translation (Default):
+   - Uses the MarianMT model (Helsinki-NLP/opus-mt-en-ar)
+   - Works offline after initial model download
+   - No API key required
+   - Suitable for privacy-sensitive applications
+
+2. Google Translate API (Optional):
+   - Requires internet connection
+   - Requires API key
+   - May provide more accurate translations for some cases
+   - Enable by setting environment variables (see Installation step 4)
 
 ## Project Structure
 
