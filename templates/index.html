@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GGwave to Arabic Translator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>GGwave to Arabic Translator</h1>
+            <div class="controls">
+                <button id="startBtn" class="btn btn-primary">Start Listening</button>
+                <button id="stopBtn" class="btn btn-danger" disabled>Stop</button>
+            </div>
+        </header>
+
+        <main>
+            <div class="status-bar">
+                <div id="statusIndicator" class="status-indicator"></div>
+                <span id="statusText">Not listening</span>
+            </div>
+
+            <div class="transcripts">
+                <div class="transcript-container">
+                    <h2>Original Text</h2>
+                    <div id="originalText" class="transcript-box"></div>
+                </div>
+                <div class="transcript-container">
+                    <h2>Arabic Translation</h2>
+                    <div id="translatedText" class="transcript-box" dir="rtl"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html> 
